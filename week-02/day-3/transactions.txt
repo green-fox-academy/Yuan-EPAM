@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<transactions>
+  <transaction>
+    <from>465345</from>
+    <to>46548743</to>
+    <amount currency="USD">2350</amount>
+  </transaction>
+  <transaction>
+    <from>12334545</from>
+    <to>8676</to>
+    <amount currency="CAD">3600</amount>
+  </transaction>
+  <transaction>
+    <from>8547467</from>
+    <to>958687</to>
+    <amount currency="EUR">1200</amount>
+  </transaction>
+  <transaction>
+    <from>38644</from>
+    <to>8756113</to>
+    <amount currency="USD">8000</amount>
+  </transaction>
+  <transaction>
+    <from>167465</from>
+    <to>9233425</to>
+    <amount currency="HUF">9500000</amount>
+  </transaction>
+  <transaction>
+    <from>232635</from>
+    <to>4864623</to>
+    <amount currency="RMB">20000</amount>
+  </transaction>
+</transactions>

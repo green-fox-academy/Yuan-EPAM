@@ -1,0 +1,7 @@
+Tom Cruise,John Doe,2018-09-21 14:23:03,CA
+Helen Hunt,Jane Doe,2018-09-21 17:02:12,AL
+Richard Gere,,2018-09-21 11:41:53,FL
+Barack Obama,Jane Doe,2018-09-21 10:00:37,IL
+,John Doe,2018-09-21 12:50:29,WA
+Michael Jackson,Jane Doe,2018-09-21 16:11:57
+Bill Gates,John Doe,2018-09-21 13:25:18,NY
