@@ -1,0 +1,12 @@
+body {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.order_list {
+    text-decoration: underline;
+}
+
+.pink_list {
+    color: rgb(245, 156, 171);
+}

@@ -1,0 +1,78 @@
+.block1{
+    margin: 8px;
+    border-style: none;
+    background-color: lightcoral;
+    width: 20%;
+    height: 15%;
+    position: relative;
+    top: 3%;
+    left: 35%;
+    background-image: url('../the-duck.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+}
+
+.block2{
+    margin: 8px;
+    border-style: none;
+    background-color: purple;
+    width: 20%;
+    height: 15%;
+    position: relative;
+    top: 3%;
+    left: 35%;
+    background-image: url('../the-duck.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+}
+
+.block3{
+    margin: 8px;
+    border-style: none;
+    background-color: gray;
+    width: 20%;
+    height: 15%;
+    position: relative;
+    top: 3%;
+    left: 35%;
+    background-image: url('../the-duck.png');
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+}
+.text1 {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    text-align: center;
+}
+
+.text2 {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    text-align: center;
+}
+.text3 {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    text-align: center;
+}
+
+/* div > p{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    text-align: center;
+    padding: 70px 0;
+} */
+
+/* div > p {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    text-align: center;
+} */

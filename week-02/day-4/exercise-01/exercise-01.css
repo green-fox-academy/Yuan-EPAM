@@ -1,0 +1,21 @@
+div.box {
+    background-color: rgb(114, 183, 226);
+    border: 5px;
+    border-color: rgb(53, 136, 101);
+    border-style: solid;
+    width: 34%;
+    height: 120px;
+    margin: 20px;
+    position: relative;
+    top: 20%;
+    left: 33%;
+}
+div > p {
+    color: darkcyan;
+    font-size: 30px;
+    position: relative;
+    top: 5px;
+    left: 10px;
+    margin: 1%;
+}
+

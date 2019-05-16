@@ -1,0 +1,43 @@
+.outside {
+    border: 8px;
+    border-style: solid;
+    border-color: cornflowerblue;
+    width: 30%;
+    height: 50%;
+    position: relative;
+    left: 35%;
+    top: 15%;
+}
+
+.inside > p{
+    color: chartreuse;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    padding: 50px 0; 
+} 
+    
+.first_floor { 
+    background-color: brown; 
+    margin: 0; 
+    height: 50px; 
+}
+
+.second_floor { 
+    background-color: yellowgreen; 
+    margin: 0;      
+    height: 50px; 
+}
+
+.third_floor { 
+    background-color: lightblue; 
+    margin: 0; 
+    height: 50px; 
+}
+
+.fourth_floor { 
+    background-color: rgb(92, 114, 236); 
+    margin: 0; 
+    height: 50px; 
+}
+

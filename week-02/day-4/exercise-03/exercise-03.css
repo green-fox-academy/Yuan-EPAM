@@ -1,0 +1,30 @@
+.block {
+    border: 6px;
+    border-style: solid;
+    border-color: rgb(73, 117, 199);
+    margin: 10px;
+    width: 30%;
+    height: 200px;
+    position: relative;
+    top: 10%;
+    left: 35%;
+}
+
+.block1 {
+    background-color: lightcoral;
+}
+
+.block2 {
+    background-color: lightblue;
+}
+
+.text1 {
+    padding: 10px;
+    color: aliceblue;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    margin: 20px;
+    height: 50px;
+}
+

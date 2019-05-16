@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    background-image: url(./topography.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: dimgray;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-image: url(./aperture.svg);
+    background-position: 15%;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    display: block;
+    color: pink;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: underline;
+}
+
+.introduction {
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 50px;
+    padding: 100px;
+    position: relative;
+    left: 18%;
+    top: 30%;
+    height: 100px;
+}
+
+.introduction > h1 {
+    color: black;
+}
+
+.introduction > h2 {
+    color: pink;
+}
+
+.introduction > p {
+    font-size: 20px;
+}
+
+.content_gap > p{
+    font-size: 30px;
+    position: relative;
+    text-align: center;
+}
+
+.wiki {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.wiki > h1 {
+    position: relative;
+    text-align: center;
+}
+
+.wiki > h2 {
+    position: relative;
+    padding-top: 50px;
+    padding-left: 100px;
+    left: 18%;
+}
+
+.wiki > p {
+    position: relative;
+    padding-top: 1%;
+    padding-left: 100px;
+    left: 18%;
+}
