@@ -4,8 +4,8 @@ class Book:
         self._author = author
         self._release_year = release_year
         self._page_numer = page_number
-        self._weight = weight
-        print(f'Creating a book {self._title}')
+        self._weight = None
+        # print(f'Creating a book {self._title}')
 
     @property
     def title(self):
