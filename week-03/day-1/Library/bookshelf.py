@@ -2,7 +2,7 @@ class Bookshelf:
     def __init__(self, name= 'shelf_one', books= []):
         self._name = name
         self._books = books
-        print(f'Creating a bookshelf: {self._name}')
+        # print(f'Creating a bookshelf: {self._name}')
 
     def add_book(self, book):
         self._books.append(book)
@@ -35,30 +35,29 @@ class Bookshelf:
                 favourite_author.append(author)
         return ' '.join(favourite_author)
 
-    def get_extreme_publish(self, extreme_kind):
-        self.check_bookshelf()
-        extreme_published = []
-        extreme_date = self._books[0].release_year
-        for book in self._books:
-            if extreme_kind == 'earliest':
-                if book.release_year < extreme_date:
-                    extreme_date = book.release_year
-                    extreme_published = list([book.title])
-                elif book.release_year == extreme_date:
-                    extreme_published.append(book.title)
-            elif extreme_kind == 'lastest':
-                if book.release_year > extreme_date:
-                    extreme_date = book.release_year
-                    extreme_published = list([book.title])
-            if book.release_year == extreme_date:
-                extreme_published.append(book.title)
-        return ', '.join(extreme_published)
-
     def get_earliest_published(self):
-        return self.get_extreme_publish('earliest')
+        self.check_bookshelf()
+        earliest_published = []
+        earliest_date = self._books[0].release_year
+        for book in self._books:
+            if book.release_year < earliest_date:
+                earliest_date = book.release_year
+                earliest_published = list([book.title])
+            elif book.release_year == earliest_date:
+                earliest_published.append(book.title)
+        return ', '.join(earliest_published)
 
     def get_lastest_published(self):
-        return self.get_extreme_publish('lastest')
+        self.check_bookshelf()
+        lastest_published = []
+        lastest_date = self._books[0].release_year
+        for book in self._books:
+            if book.release_year > lastest_date:
+                lastest_date = book.release_year
+                lastest_published = list([book.title])
+            elif book.release_year == lastest_date:
+                lastest_published.append(book.title)
+        return ', '.join(lastest_published)
 
     def __str__(self):
         favourite_author = self.get_favourite_author()

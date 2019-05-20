@@ -4,7 +4,7 @@ class Book:
         self._author = author
         self._title = title
         self._release_year = release_year
-        print(f'Creating a book {self._title}')
+        # print(f'Creating a book {self._title}')
 
     @property
     def author(self):
