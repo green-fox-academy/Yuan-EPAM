@@ -16,7 +16,7 @@ class Bookshelf:
             raise IndexError(f'There is no book in {self._name}')
 
     def get_favourite_author(self):
-        check_bookshelf()
+        self.check_bookshelf()
         author_count = {}
         favourite_author = []
         max_book = 0
@@ -27,46 +27,47 @@ class Bookshelf:
                 author_count[book.author] = 1
         # The number of the author of most books in a shelf, could be 1, or many
         for author, book_count in author_count.items():
+            print(f'author: {author}, book_count: {book_count}')
             if book_count > max_book:
                 max_book = book_count
-                favourite_author = list(author)
+                favourite_author = list([author])
             elif book_count == max_book:
                 favourite_author.append(author)
         return ' '.join(favourite_author)
 
     def get_extreme_publish(self, extreme_kind):
-        check_bookshelf()
+        self.check_bookshelf()
         extreme_published = []
-        extreme_date = ''
+        extreme_date = self._books[0].release_year
         for book in self._books:
             if extreme_kind == 'earliest':
                 if book.release_year < extreme_date:
                     extreme_date = book.release_year
-                    extreme_published = list(book.name)
+                    extreme_published = list([book.title])
                 elif book.release_year == extreme_date:
-                    extreme_published.append(book.name)
+                    extreme_published.append(book.title)
             elif extreme_kind == 'lastest':
                 if book.release_year > extreme_date:
                     extreme_date = book.release_year
-                    extreme_published = list(book.name)
+                    extreme_published = list([book.title])
             if book.release_year == extreme_date:
-                extreme_published.append(book.name)
-        return ' '.join(extreme_published)
+                extreme_published.append(book.title)
+        return ', '.join(extreme_published)
 
     def get_earliest_published(self):
-        return get_extreme_publish('earliest')
+        return self.get_extreme_publish('earliest')
 
-    def get_latest_published(self):
-        return get_extreme_publish('lastest')
+    def get_lastest_published(self):
+        return self.get_extreme_publish('lastest')
 
     def __str__(self):
-        favourite_author = get_favourite_author()
-        earliest_published = get_earliest_published()
-        lastest_published = get_latest_published()
+        favourite_author = self.get_favourite_author()
+        earliest_published = self.get_earliest_published()
+        lastest_published = self.get_lastest_published()
         return f'In bookshelf {self._name}: \n \
-            favourite author: {favourite_author} \n \
-            earliest published book: {earliest_published} \n \
-            lastest published book: {lastest_published}'
+            - favourite author: {favourite_author} \n \
+            - earliest published book: {earliest_published} \n \
+            - lastest published book: {lastest_published}'
 
 
         

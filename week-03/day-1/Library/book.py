@@ -4,7 +4,7 @@ class Book:
         self._author = author
         self._title = title
         self._release_year = release_year
-        print(f'Here is a book {self._title}')
+        print(f'Creating a book {self._title}')
 
     @property
     def author(self):
@@ -19,5 +19,5 @@ class Book:
         return self._release_year
 
     def __str__(self):
-        return f'{self.authro}: {self.title} ({self.release_year})'
+        return f'{self.author}: {self.title} ({self.release_year})'
 
