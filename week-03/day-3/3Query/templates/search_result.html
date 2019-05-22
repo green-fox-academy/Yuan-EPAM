@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>Search Result: </p>
+    <table border = 2>
+        <tr>
+            <th><p>key</p></th> 
+            <th><p>result</p></th>
+        </tr>
+        {% for key, value in search_res.items() %}
+            <tr>
+                <th> {{ key }}</th>
+                <th> {{ value }}</th>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -52,10 +52,5 @@ def get_movie_info(movie_id):
     }
     return movie_info[movie_id]
 
-# @app.route('/movies', method= ['GET', 'POST']):
-# def get_movie_endpoint(end_point, movie_name):
-
-
-
 #  if __name__ == '__main__':
 #     flask.run(debug= True)
