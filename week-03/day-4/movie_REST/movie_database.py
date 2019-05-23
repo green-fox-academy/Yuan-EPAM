@@ -65,7 +65,17 @@ def write_movie_data(movie):
     try:
         with open(movie_path) as json_file:
             json_data = json.load(json_file)
-            json_data.append(movie)
+            # If movie_id exists, to modify movie info
+            if movie['id'] in init_movie_name.keys():
+                for i, data in enumerate(json_data):
+                    if data['id'] == movie['id']:
+                        for key in data.keys():
+                            if movie[key]:
+                                data.update({key:movie[key]})
+                        json_data[i] = data
+                        break
+            else: # append a new movie info
+                json_data.append(movie)
         with open(movie_path, 'w') as json_file:
             json.dump(json_data, json_file) 
     except IOError:
@@ -73,7 +83,6 @@ def write_movie_data(movie):
 
 def write_movie_name(movie):
     movie_name_path = get_movie_name_path()
-    print(movie)
     try:
         with open(movie_name_path) as json_file:
             json_data = json.load(json_file)
@@ -90,8 +99,3 @@ def update_a_movie(new_movie):
     write_movie_name(new_movie)
 
 init_movie_name = get_movie_name()
-# print(read_api_key())
-# print(init_movie_name)
-
-# write_movie_name({ "id" : "7", "title" : "abc_test"})
-# print(get_movie_name())

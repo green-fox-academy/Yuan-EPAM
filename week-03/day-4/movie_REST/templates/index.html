@@ -7,8 +7,10 @@
     <title>Movie info</title>
 </head>
 <body>
-    <h3>Feel free to manipulate the movies data here.</h3>
-    <h3>Please do not care about if the output right or wrong. You will get some data anyway~</h3>
+    <h3>
+        Feel free to manipulate the movies data here. <br>
+        Please do not care about if the output right or wrong. You will get some data anyway~
+    </h3>
 
    <ul>
        {% for key, val in init_movie_name.items() %}
@@ -26,8 +28,10 @@
         <input type="submit" value="Show All Movies"/>
     </form>
 
-    <h4>If there is no movie you are looking for, you can add it below</h4>
-    <form action="{{ url_for('add_new_movie') }}" method= "POST">
+    <h4>
+        If there is no movie you are looking for, you can add it below
+    </h4>
+    <form action="{{ url_for('manipulate_movie') }}" method= "POST">
         movie name: <br>
         <input type="text" name="title"/> <br>
         movie release year: <br>
@@ -38,8 +42,21 @@
         <input type="text" name="description"/> <br>
         api-key: <br>
         <input type="password" name="api-key"/> <br>
+        movie_id: (Only for modify) <br>
+        <input type="text" name="movie_id"/> <br>
 
-        <input type="submit"/>
+        <button type="submit" name="update_movie" value="add">add movie</button>
+        <button type="submit" name="update_movie" value="modify">modify movie</button>
+    </form>
+
+    <h4>
+        If you do not like a movie, please input the movie id to delete it...
+    </h4>
+    <form action="{{ url_for('delete_movie') }}" method="POST">
+        movie to delete <br>
+        <input type="text" name="movie_id"> <br>
+        <input type="submit" name="delete_movie" value="delete" />
+    
     </form>
 </body>
 </html>
