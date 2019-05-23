@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, redirect, url_for
 from flask import request, jsonify
 
-import get_movie_data as movie_db
+import movie_database as movie_db
 
 app = Flask(__name__)
 
@@ -51,27 +51,36 @@ def show_movie_data(movie_id):
 def check_api_key(api_key_user):
     return api_key_user == movie_db.get_api_key()
 
+def create_new_movie():
+    return {
+        'id' : movie_db.create_new_movie_id(),
+        'title' : request.form['title'],
+        'year' : request.form['genre'],
+        'description' : request.form['description']
+    }
+
 @app.route('/api/movies', methods= ['GET', 'POST'])
 def add_new_movie():
     if request.method == 'POST':
         api_key = request.form['api-key']
         if check_api_key(api_key):
-            new_movie = jsonify({
-                'id' : movie_db.create_new_movie_id(),
-                'title' : request.form['title'],
-                'year' : request.form['genre'],
-                'description' : request.form['description']
-            })
-            new_movie.status_code = 200
-            return new_movie
+            new_movie = create_new_movie()
+            resp_new_movie = jsonify(create_new_movie())
+            resp_new_movie.status_code = 200
+            movie_db.update_a_movie(new_movie)
+            return resp_new_movie
         else:
-            failed = jsonify({
-                "error" : "Invalid API_KEY"
-            })
+            failed = jsonify({"error" : "Invalid API_KEY"})
             failed.status_code = 403
             return failed
-
 
 """
 ---------------- PUT ---------------- 
 """
+@app.route('/api/movies/<movie_id>', mehtods= ['GET', 'POST'])
+def put_movie():
+    if request.method == 'POST':
+        api_key = request.form['api-key']
+        if check_api_key(api_key):
+            
+            
