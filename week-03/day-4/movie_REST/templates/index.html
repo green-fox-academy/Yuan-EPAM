@@ -25,5 +25,21 @@
     <form action="{{ url_for('show_all_movie_data') }}" method="GET">
         <input type="submit" value="Show All Movies"/>
     </form>
+
+    <h4>If there is no movie you are looking for, you can add it below</h4>
+    <form action="{{ url_for('add_new_movie') }}" method= "POST">
+        movie name: <br>
+        <input type="text" name="title"/> <br>
+        movie release year: <br>
+        <input type="text" name="year"/> <br>
+        movie genre: <br>
+        <input type="text" name="genre"/> <br>
+        movie description: <br> 
+        <input type="text" name="description"/> <br>
+        api-key: <br>
+        <input type="password" name="api-key"/> <br>
+
+        <input type="submit"/>
+    </form>
 </body>
 </html>

@@ -17,6 +17,9 @@ def show_home_page():
     else:
         return render_template('index.html', init_movie_name = movie_db.init_movie_name)
 
+"""
+---------------- GET ---------------- 
+"""
 def get_API_data(movie_id= None):
     # print(f'request method: {request.method}')
     if not movie_id:
@@ -39,7 +42,36 @@ def show_movie_data(movie_id):
     print(f'movie_id {movie_id}')
     if request.method == 'GET':
         response_movie = get_API_data(movie_id)
-        print('response_movie:')
-        print(response_movie)
         response_movie.status_code = 200
         return response_movie
+
+"""
+---------------- POST ---------------- 
+"""
+def check_api_key(api_key_user):
+    return api_key_user == movie_db.get_api_key()
+
+@app.route('/api/movies', methods= ['GET', 'POST'])
+def add_new_movie():
+    if request.method == 'POST':
+        api_key = request.form['api-key']
+        if check_api_key(api_key):
+            new_movie = jsonify({
+                'id' : movie_db.create_new_movie_id(),
+                'title' : request.form['title'],
+                'year' : request.form['genre'],
+                'description' : request.form['description']
+            })
+            new_movie.status_code = 200
+            return new_movie
+        else:
+            failed = jsonify({
+                "error" : "Invalid API_KEY"
+            })
+            failed.status_code = 403
+            return failed
+
+
+"""
+---------------- PUT ---------------- 
+"""
