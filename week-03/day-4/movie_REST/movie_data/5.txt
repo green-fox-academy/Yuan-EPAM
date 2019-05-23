@@ -1,0 +1,5 @@
+{
+    "title": "Lock, Stock and Two Smoking Barrels",
+    "director": "Director of Lock, Stock and Two Smoking Barrels",
+    "content": "Content of Lock, Stock and Two Smoking Barrels"
+}

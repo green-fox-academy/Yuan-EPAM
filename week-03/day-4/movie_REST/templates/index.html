@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie info</title>
+</head>
+<body>
+    <h3>Feel free to manipulate the movies data here.</h3>
+    <h3>Please do not care about if the output right or wrong. You will get some data anyway~</h3>
+
+   <ul>
+       {% for key, val in init_movie_name.items() %}
+
+       <li><a href= "api/movies/{{ key }}">{{ val }}</a></li>
+
+       {% endfor %}
+       <!-- <li><a href= "api/movies/2"">Intouchable</li> -->
+       <!-- <li><a href= "api/movies/3"">The Dark Night</li> -->
+       <!-- <li><a href= "api/movies/4">Witness for the Prosecution</li> -->
+       <!-- <li><a href= "api/movies/5">Lock, Stock and Two Smoking Barrels</li> -->
+   </ul>
+
+    <form action="{{ url_for('show_all_movie_data') }}" method="GET">
+        <input type="submit" value="Show All Movies"/>
+    </form>
+</body>
+</html>
