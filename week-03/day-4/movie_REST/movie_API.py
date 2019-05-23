@@ -82,7 +82,7 @@ def modify_movie():
         # TODO to see if it really could be used for add and modify functions
         return add_new_movie()
     else:
-        failed = jsonify({"error" : f"No movie found with {movie_id}"})
+        failed = jsonify({"error" : f"No movie found with {movie_id} ID"})
         failed.status_code = 404
         return failed
 
@@ -90,7 +90,7 @@ def modify_movie():
 def manipulate_movie():
     if request.method == 'POST':
         api_key = request.form['api-key']
-        print(f'request.form {request.form}')
+        # print(f'request.form {request.form}')
         if check_api_key(api_key):
             if request.form['update_movie'] == 'add':
                 return add_new_movie()
@@ -104,6 +104,21 @@ def manipulate_movie():
 """
 ---------------- DELETE ---------------- 
 """
-@app.route('/app/movies/', methods= ['GET', 'POST'])
+@app.route('/api/movies/', methods= ['GET', 'POST'])
 def delete_movie():
-    pass
+    if request.method == 'POST':
+        api_key = request.form['api-key']
+        if check_api_key(api_key):
+            movie_id = request.form['movie_id']
+            if movie_id in movie_db.init_movie_name.keys():
+                print(f'movie_id {movie_id}')
+                movie_db.delete_a_movie(movie_id)
+                return redirect(f"/api/movies/{movie_id}")
+            else:
+                failed = jsonify({"error" : f"No movie found with {request.form['movie_id']} ID"})
+                failed.status_code = 404
+                return failed
+        else:
+            failed = jsonify({"error" : "Invalid API_KEY"})
+            failed.status_code = 403
+            return failed

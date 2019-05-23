@@ -91,11 +91,42 @@ def write_movie_name(movie):
             json.dump(json_data, json_file)
     except IOError as e:
         print(dir(e))
-        print(f'Unable to read file {movie_name_path}')
+        # print(f'Unable to read file {movie_name_path}')
+
+def delete_movie_name(movie_id):
+    movie_name_path = get_movie_name_path()
+    try:
+        with open(movie_name_path) as json_file:
+            json_data = json.load(json_file)
+            json_data.pop(movie_id)
+        with open(movie_name_path, 'w') as json_file:
+            json.dump(json_data, json_file)
+    except IOError as e:
+        print(e)
+
+def delete_movie(movie_id):
+    movie_path = get_movie_path()
+    try:
+        with open(movie_path) as json_file:
+            json_data = json.load(json_file)
+            for i, data in enumerate(json_data):
+                if data['id'] == movie_id:
+                    json_data.pop(i)
+                    break
+        with open(movie_path, 'w') as json_file:
+            json.dump(json_data, json_file)
+    except IOError as e:
+        print(e)
 
 def update_a_movie(new_movie):
     # init_movie_name[new_movie['id']] = new_movie['title']
-    write_movie_data(new_movie)
     write_movie_name(new_movie)
+    write_movie_data(new_movie)
+    init_movie_name = get_movie_name()
+
+def delete_a_movie(movie_id):
+    delete_movie(movie_id)
+    delete_movie_name(movie_id)
+    init_movie_name = get_movie_name()
 
 init_movie_name = get_movie_name()

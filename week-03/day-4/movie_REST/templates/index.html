@@ -55,6 +55,9 @@
     <form action="{{ url_for('delete_movie') }}" method="POST">
         movie to delete <br>
         <input type="text" name="movie_id"> <br>
+        api-key: <br>
+        <input type="password" name="api-key"/> <br>
+        
         <input type="submit" name="delete_movie" value="delete" />
     
     </form>
