@@ -33,7 +33,7 @@ def transform_data(posts, authors):
         post_tmp = post
         post_tmp.update({'author':author_name[post['author']]})
         if post['id'] in post_liked.keys():
-            post_tmp['liked_by'] = ', '.join(post_liked[post['id']])
+            post_tmp['liked_by'] = post_liked[post['id']]
         else:
             post_tmp['liked_by'] = []
         processed_post.append(post_tmp)

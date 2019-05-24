@@ -32,7 +32,7 @@
         <h1 id="p{{ post['id'] }}">{{ post['author'] }}#{{ post['id' ]}} <a href="#p{{ post['id'] }}">¶</a></h1>
         <p>{{ post['content'] }}</p>
         {% if post['liked_by'] %}
-        <p>Liked by {{ post['liked_by'] }}</p>
+        <p>Liked by {{ post['liked_by'] | join(', ') }}</p>
         {% endif %}
     </article>
     {% endfor %}
