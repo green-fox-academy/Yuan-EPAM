@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Posts</h1>
+    {% for post in posts %}
+    <article>
+        <h1 id="p{{ post['id'] }}">{{ post['author'] }}#{{ post['id' ]}} <a href="#p{{ post['id'] }}">¶</a></h1>
+        <p>{{ post['content'] }}</p>
+        {% if post['liked_by'] %}
+        <p>Liked by {{ post['liked_by'] }}</p>
+        {% endif %}
+    </article>
+    {% endfor %}
+</body>
+
+</html>
