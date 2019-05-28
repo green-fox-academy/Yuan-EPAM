@@ -1,0 +1,38 @@
+/*
+Movie ( mID, title, year, director ) 
+English: There is a movie with ID number mID, a title, a release year, and a director. 
+
+Reviewer ( rID, name ) 
+English: The reviewer with ID number rID has a certain name. 
+
+Rating ( rID, mID, stars, ratingDate ) 
+English: The reviewer rID gave the movie mID a number of stars rating (1-5) on a certain ratingDate. 
+*/
+
+/* 1. Create a view where you display the reviewer's name and the amount of their review
+CREATE view review_amount AS
+SELECT DISTINCT rv.name, COUNT(r.stars) AS review_amount
+FROM reviewer rv LEFT JOIN rating r
+    ON rv.rID=r.rID
+GROUP BY rv.name;
+
+/* 2. Create a view where you display the movies which have no review */
+CREATE view movie_no_review AS 
+SELECT m.mID, m.title, m.director
+FROM movie m LEFT JOIN rating r
+    ON m.mID=r.mID
+WHERE r.stars IS NULL;
+
+/* 3. Create a view where you display all the directors (do not include null values)
+CREATE view movie_director AS
+SELECT director AS movie_director
+FROM movie
+WHERE director IS NOT NULL;
+
+/* Create a view where you display the movie title and the average rating */
+CREATE view movie_avg_rating AS 
+SELECT DISTINCT m.title AS movie_title, ROUND(AVG(r.stars), 2)
+FROM movie m INNER JOIN rating r
+    ON m.mID=r.mID
+WHERE r.stars IS NOT NULL
+GROUP BY m.title;
