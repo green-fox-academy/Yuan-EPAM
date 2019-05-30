@@ -1,0 +1,24 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Project{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Slack Analysis</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <!-- <h1>Hello, {{ name }}!</h1> -->
+        <form action="{{ url_for('connect_db')}}" method="POST">
+            <button type="submit" name='db' value="slack_analysis" class="btn btn-primary">connect to database</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

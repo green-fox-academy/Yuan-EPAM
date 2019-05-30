@@ -37,14 +37,14 @@ def initialize_db(a_user, a_password, db_name='slack_analysis'):
             connection.close()
             print('PostgresSQL connection is closed')
 
-def connect_to_db(a_user, a_password):
+def connect_to_db(a_user, a_password, db_name='slack_analysis'):
     try:
         connection = psycopg2.connect(
             user = a_user,
             password = a_password,
             host = '127.0.0.1',
             port = '5432',
-            database = 'slack_analysis'
+            database = db_name
         )
         print('PostgresSQL is connected')
         return connection

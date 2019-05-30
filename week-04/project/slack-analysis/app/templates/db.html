@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% extends "bootstrap/base.html" %}
+
+    {% block title %}Project{% endblock %}
+</head>
+<body>
+    {% block content %}
+    <!-- <p>Database connected!</p> -->
+    <form action="{{ url_for('show_data') }}" method="POST">
+        <button type="submit" name="refresh" class="btn btn-primary">Rehresh Data</button>
+    </form>
+    <div class="container">
+        <h3>The most messages senter in the thanks channel: </h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>User Token</th>
+                    <th>Messages Sent Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in res_1 %}
+                    <tr>
+                        <td>{{ user[0] }}</td>
+                        <td>{{ user[1] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endblock %}
+</body>
+</html>
