@@ -15,7 +15,7 @@ def read_file(folder, file_name):
         print(e)
         print(f'Unable to read file {file_path}')
 
-def initialize_db(a_user, a_password):
+def initialize_db(a_user, a_password, db_name='slack_analysis'):
     try:
         db_file_path = get_file_path('db', 'db_slack.sql')
         connection = psycopg2.connect(
@@ -23,7 +23,7 @@ def initialize_db(a_user, a_password):
             password = a_password,
             host = '127.0.0.1',
             port = '5432',
-            database = 'slack_analysis'
+            database = db_name
         )
         cursor = connection.cursor()
         cursor.execute(open(db_file_path, 'r').read())
@@ -50,6 +50,3 @@ def connect_to_db(a_user, a_password):
         return connection
     except (Exception, psycopg2.Error) as e:
         print('Error while connecting to PostgresSQL', e)
-
-user = {"a_user" : "postgres", "a_password" : "root"}
-initialize_db(user['a_user'], user['a_password'])
