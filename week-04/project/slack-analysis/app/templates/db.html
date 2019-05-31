@@ -1,37 +1,75 @@
+{% extends "bootstrap/base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% extends "bootstrap/base.html" %}
 
     {% block title %}Project{% endblock %}
 </head>
 <body>
+    {% block navbar %}
+    <div class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Slack Analysis</a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
     {% block content %}
-    <!-- <p>Database connected!</p> -->
-    <form action="{{ url_for('show_data') }}" method="POST">
-        <button type="submit" name="refresh" class="btn btn-primary">Rehresh Data</button>
-    </form>
     <div class="container">
-        <h3>The most messages senter in the thanks channel: </h3>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>User Token</th>
-                    <th>Messages Sent Count</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for user in res_1 %}
-                    <tr>
-                        <td>{{ user[0] }}</td>
-                        <td>{{ user[1] }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <form action= "{{ url_for('show_data')}}" method="POST">
+            <h3> 
+                <span><button type="submit" name="load_data" value="most_msg" class="btn btn-info" data-toggle="collapse" data-target="#collapse1">Load Data</button></span>
+                1. Who sent the most messages to the thanks channel?
+            </h3>
+            <h3> 
+                <span><button type="submit" name="load_data" value="most_emoji" class="btn btn-info" data-toggle="collapse" data-target="#collapse1">Load Data</button></span>
+                2. Which emoji is the most common as reaction in the thanks channel?
+            </h3>
+            <h3> 
+                <span><button type="submit" name="load_data" value="most_reacted_user" class="btn btn-info" data-toggle="collapse" data-target="#collapse1">Load Data</button></span>
+                3. Who reacted to the most messages?
+            </h3>
+            <h3> 
+                <span><button type="submit" name="load_data" value="most_mentioned" class="btn btn-info" data-toggle="collapse" data-target="#collapse1">Load Data</button></span>
+                4. Who is the most mentioned person in the thanks channel?
+            </h3>
+            <h3> 
+                <span><button type="submit" name="load_data" value="most_reaction_msg" class="btn btn-info" data-toggle="collapse" data-target="#collapse1">Load Data</button></span>
+                5. Which message got the most reactions in the thanks channel?
+            </h3>
+            <h3> 
+                <span><button type="submit" name="load_data" value="most_active_date" class="btn btn-info" data-toggle="collapse" data-target="#collapse1">Load Data</button></span>
+                6. Which day was the most active in the channel?
+            </h3>
+        </form>
+        
+        <div id="collapse1" clsss="collapse">
+            <div class="table-responsive-lg">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            {% for head in heads %}
+                                <th>{{ head }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in res %}
+                            <tr>
+                                {% for col in user %}
+                                    <td>{{ col }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     {% endblock %}
 </body>

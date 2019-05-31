@@ -29,9 +29,6 @@ def drive_cml(user):
 
 # TODO user info input from web
 user = {"a_user" : "postgres", "a_password" : "root"}
-# db_slack.initialize_db(user['a_user'], user['a_password'])
-# db_connection = db_slack.connect_to_db(user['a_user'], user['a_password'])
-# db_cursor = db_connection.cursor()
 
 """ 
 file name:

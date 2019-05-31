@@ -10,7 +10,7 @@
 | edited            | message was edited                                           |      |
 | edited (user)     | the user edited the message                                  |      |
 | edited (ts)       | timestamp of the edited                                      |      |
-| thread_ts         | equal to the top ts message                                  |      |
+| thread_ts         | equal to the top ts message (indicate this thread belonging to message). This `thread_ts` appears only there is |      |
 | reply_count       |                                                              |      |
 | reply_users_count |                                                              |      |
 | reply_users       |                                                              |      |

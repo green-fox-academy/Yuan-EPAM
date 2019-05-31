@@ -76,6 +76,18 @@ def insert2sql_mention(message_id, user_id, db_connection, db_cursor):
     })
     db_connection.commit()
 
+def check_db_empty(db_connection,db_cursor):
+    query = """ SELECT id, token FROM users; """
+    db_cursor.execute(query)
+    if db_cursor.rowcount:
+        users = {}
+        res = db_cursor.fetchall()
+        for user in res:
+            # print(f'{user} {type(user)}')
+            users[user[1]] = user[0]
+        return users
+    return {}
+
 def convert_json2sql(json_data, db_connection, db_cursor):
     """
     Database Tables:
@@ -88,7 +100,7 @@ def convert_json2sql(json_data, db_connection, db_cursor):
         return
     user_col = ['user']
     message_col = ['client_msg_id', 'user', 'ts']
-    users = dict().fromkeys(['user_id', 'token'])
+    users = check_db_empty(db_connection, db_cursor)
     print('Processing data...')
     for thank_msg in json_data:
         # Insert to database only when the user info and message id both exist. 
