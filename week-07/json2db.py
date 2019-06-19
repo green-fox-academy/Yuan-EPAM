@@ -1,6 +1,7 @@
 import sys
 sys.path.append('.')
 sys.path.append('..')
+sys.path.append('db')
 
 import os
 import json
@@ -177,7 +178,7 @@ class JSONtoDB:
 # password = 'root'
 # db_name = 'real_estate'
 # db_psql = DBPsql(user, password, db_name)
-# db_psql.initialize(folder= 'db', db_init_file= 'db_real_estate.sql')
+# db_psql.initialize(db_init_file= os.path.join('db', 'db_real_estate.sql'))
 # db_psql.connect()
 
 # test_insert = {
