@@ -79,6 +79,7 @@ class JSONtoDB:
         query_values = {"house_id" : None, "latitude" : None, "longitude" : None, "location_accuracy" : None,
                         "location" : None, "country" : None, "city" : None, "town" : None, "area" : None, "street" : None}
         query_values.update(*args, **kwargs)
+        # print(f'-->query_values : {query_values}')
         self._db.cursor.execute(query, query_values)
         self._db.connection.commit()
 
@@ -125,11 +126,13 @@ class JSONtoDB:
                 self._house[cols[key]] = item[key]
 
     def load_house_location(self, house_id, item, data_source):
+        # format : {DataBase table columns : JSON keyword}
         cols = {"latitude" : "latitude", "longitude" : "longitude", "location_accuracy" : "location_accuracy",
                 "location" : "location"}
         for key in cols.keys():
             if key in item.keys():
-                self._lister[cols[key]] = item[key]
+                self._house_location[cols[key]] = item[key]
+        # print(self._house_location)
         self._house_location.update({
             "house_id" : house_id, "location" : data_source['location'], 
             "country" : data_source['country'], "city" : None, "town" : None, "area" : None, "street" : None
@@ -156,7 +159,10 @@ class JSONtoDB:
     def start(self):
         # TODO convert json data to db during requesting api
         files = self.find_json_data()
+        # count = 1
         for file in files:
+            # if count > 1:
+                # break
             self.load_data(file)
             if self._data:
                 self._data_source = self._data['request']
@@ -172,14 +178,14 @@ class JSONtoDB:
                     self.load_lister(house_id, price_id, item, self._data_res)
                     self.insert2sql_location(self._house_location)
                     self.insert2sql_lister(self._lister)
+            # count += 1
 
-
-# user = 'postgres'
-# password = 'root'
-# db_name = 'real_estate'
-# db_psql = DBPsql(user, password, db_name)
-# db_psql.initialize(db_init_file= os.path.join('db', 'db_real_estate.sql'))
-# db_psql.connect()
+user = 'postgres'
+password = 'root'
+db_name = 'real_estate'
+db_psql = DBPsql(user, password, db_name)
+db_psql.initialize(db_init_file= os.path.join('db', 'db_real_estate.sql'))
+db_psql.connect()
 
 # test_insert = {
 #     "type" : "flat",
@@ -190,8 +196,8 @@ class JSONtoDB:
 #     "keywords" : "test house flat",
 #     "summary" : "good to buy"
 # }
-# json2db = JSONtoDB(db_psql)
+json2db = JSONtoDB(db_psql)
 # json2db.insert2sql_house(test_insert)
 # print(json2db.get_data_folder())
 # json2db.find_json_data()
-# json2db.start()
+json2db.start()
