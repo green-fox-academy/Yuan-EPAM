@@ -20,8 +20,8 @@ class NestoriaAPI:
         return self._param
     
     @param.setter
-    def param(self, **args):
-        self._param.update(**args)
+    def param(self, *args, **args):
+        self._param.update(*args, **args)
 
     @property
     def endpoint(self):
