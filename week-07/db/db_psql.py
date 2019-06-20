@@ -4,7 +4,7 @@ import json
 import psycopg2
 
 class DBPsql:
-    def __init__(self, user, password, db_name):
+    def __init__(self, user= 'postgres', password= 'root', db_name= 'real_estate'):
         self._user = user
         self._password = password
         self._db_name = db_name
@@ -66,8 +66,9 @@ class DBPsql:
 # user = 'postgres'
 # password = 'root'
 # db_name = 'real_estate'
-# db_psql = DBPsql(user, password, db_name)
-# db_psql.initialize(db_init_file= 'db_real_estate.sql')
-# db_psql.connect()
+db_psql = DBPsql()
+# db_psql.initialize(db_init_file= 'db_ml_model.sql')
+db_psql.connect()
+db_psql.close()
 # print(db_psql.connection.status)
 # db_psql.connect()
