@@ -1,0 +1,53 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Recommend House Sell Price{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">House Price Recommendation</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{%block content %}
+<div class="container">
+    <form class="form-horizontal" action="{{ url_for('show_prediction') }}" method="POST">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Bedroom Number:</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="bedroom_num" placeholder="Enter bedroom number" name="bedroom_num">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Location</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="location" placeholder="Enter location" name="location">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label><input type="checkbox" name="test_mode"> test mode</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" name="predict" class="btn btn-default">Predict</button>
+            </div>
+        </div>
+    </form>
+
+    <h3>Recommendation Price : {{ recommendation_price }}</h3>
+    <div>
+        {{ test_map }}
+    </div>
+</div>
+
+{% endblock %}
+
+
+

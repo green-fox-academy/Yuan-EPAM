@@ -66,9 +66,9 @@ class DBPsql:
 # user = 'postgres'
 # password = 'root'
 # db_name = 'real_estate'
-db_psql = DBPsql()
+# db_psql = DBPsql()
 # db_psql.initialize(db_init_file= 'db_ml_model.sql')
-db_psql.connect()
-db_psql.close()
+# db_psql.connect()
+# db_psql.close()
 # print(db_psql.connection.status)
 # db_psql.connect()

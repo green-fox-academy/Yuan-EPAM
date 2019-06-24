@@ -1,8 +1,8 @@
 /* Deleted tables if they already exist */
-DROP TABLE IF EXISTS Messages CASCADE;
-DROP TABLE IF EXISTS Users CASCADE;
-DROP TABLE IF EXISTS Reactions CASCADE;
-DROP TABLE IF EXISTS Mentions;
+-- DROP TABLE IF EXISTS Messages CASCADE;
+-- DROP TABLE IF EXISTS Users CASCADE;
+-- DROP TABLE IF EXISTS Reactions CASCADE;
+-- DROP TABLE IF EXISTS Mentions;
 
 /* Create the schema for our tables */
 CREATE TABLE Users (id SERIAL PRIMARY KEY,
